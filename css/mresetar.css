@@ -1,0 +1,49 @@
+.vjezba { color: purple;}
+
+.croz section {
+	background: url("../images/CROZ-logo_small_2.png");
+	background-position: 5% 94%;
+	background-repeat: no-repeat;
+	background-size: 200px;
+}
+
+
+
+.croz #authors, .croz #authors h1, .croz #authors h2 {
+	color: white;
+}
+
+.croz #authors>section.present {
+	background: rgba(0,0,0,0.3);
+}
+
+
+.croz section #radar {
+	height: 400px;
+	background: url("../images/bottom_right_radar.png");
+	background-repeat: no-repeat;
+	background-position: 100% 0%;
+}
+
+.croz section #radar div {
+	height: 400px;
+	background: url("../images/languages.png");
+	background-repeat: no-repeat;
+	background-position: 0% 0%;
+}
+
+/*
+.croz #author  { 
+ 	background: rgba(0,0,0,0.4); 
+ }
+ */ 
+
+.reveal h1 { font-size: 2.5em; }
+.reveal h2 { font-size: 1.8em; }
+
+.state-background { background: white;}
+
+.reveal pre {
+	width: 100%;
+	margin: 2px auto;
+}

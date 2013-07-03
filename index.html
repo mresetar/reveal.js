@@ -1,382 +1,311 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+<meta charset="utf-8">
 
-		<title>reveal.js - The HTML Presentation Framework</title>
+<title>CROZ DevCon 2013 - CoffeeScript</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+<meta name="author" content="Hakim El Hattab">
 
-		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reveal.min.css">
-		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+<link rel="stylesheet" href="css/reveal.min.css">
+<link rel="stylesheet" href="css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="css/mresetar.css">
+<link rel="stylesheet" href="css/animate.css">
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="lib/css/zenburn.css">
+<link rel="icon" type="image/ico" href="images/favicon.ico">
 
-		<!-- For syntax highlighting -->
-		<link rel="stylesheet" href="lib/css/zenburn.css">
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+	document.write('<link rel="stylesheet" href="css/print/'
+			+ (window.location.search.match(/print-pdf/gi) ? 'pdf' : 'paper')
+			+ '.css" type="text/css" media="print">');
+</script>
 
-		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
-		<script>
-			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
-		</script>
-
-		<!--[if lt IE 9]>
+<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<!-- Any section element inside of this container is displayed as a slide -->
-			<div class="slides">
-				<section>
-					<h1>Reveal.js</h1>
-					<h3>HTML Presentations Made Easy</h3>
-					<p>
-						<small>Created by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
-					</p>
-				</section>
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides croz">
+            <section>
+                <img alt="CroDevCon" src="images/CROZDevCon.png" /> <img alt="CoffeeScript" src="images/csLogo.png">
+                <p>
+                    <small>...a little language that compiles into JavaScript</small>
+                </p>
+                <p>
+                    <small><a href="http://www.croz.net">CROZ</a> 6.7.2013. / <a href="http://twitter.com/MiroslavResetar">@MiroslavResetar</a></small>
+                </p>
+            </section>
+            
+            <section id="authors" data-background="images/Brendan_Eich_and_Jeremy_Ashkenas_2.png" data-background-size="800px">
+                <section>
+                </section>
+                <section>
+                    <h2>Brendan Eich</h2>
+                    <img alt="jslogo" src="images/javascript_logo_unofficial-300x300.png" id="javaScriptLogo" class="fragment" />
+                    <span id="javaScriptLogoNext" class="fragment"></span>
+                    <ul>
+                            <li  class="fragment">Tvorac JavaScripta (Netscape 2.0, 11/95)</li>
+                            <blockquote class="fragment">I had to be done in ten days or something worse than JS would have happened</blockquote>
+                            <li class="fragment">11/96 - ECMAScript započinje standardizaciju</li>
+                            <li class="fragment">1999 - ECMAScript 3 (klasični JS, IE8)</li>
+                            <li class="fragment">2011 - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/ECMAScript_5_support_in_Mozilla">ECMAScript 5</a> (IE9+, JSON, 'use strict')</li>
+                            <li class="fragment">201x - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/ECMAScript_6_support_in_Mozilla">ES.Next</a> (Harmony, ECMAScript 6))</li>
+                            <li class="fragment">ES6 će preuzeti neke od koncepata CoffeScripta</li>
+                    </ul>
+                </section>
+                <section>
+                    <h2>Jeremy Ashkenas</h2>
+                     <img alt="csLogo_fullBackground" src="images/csLogo_fullBackground.png" id="csLogo_fullBackground" class="fragment" />
+<script type="text/coffeescript">
+dodajEfekt = (elementId, elemIdTest, elemId='javaScriptLogo', shown=true) ->
+    if (elementId == elemIdTest) 
+        if (shown) 
+            $("##{elemId}").addClass 'animated bounceInDown'
+        else
+            $("##{elemId}").addClass 'animated bounceOutDown'
+            $("##{elemId}").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", () -> $("##{elemId}").remove() )
 
-				<section>
-					<h2>Heads Up</h2>
-					<p>
-						reveal.js is a framework for easily creating beautiful presentations using HTML. You'll need a browser with
-						support for CSS 3D transforms to see it in its full glory.
-					</p>
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'javaScriptLogo', 'javaScriptLogo', true))
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'javaScriptLogoNext', 'javaScriptLogo', false)) 
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'csLogo_fullBackground', 'csLogo_fullBackground', true))
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'csLogo_fullBackgroundNext', 'csLogo_fullBackground', false)) 
+</script>                   
+                    <span id="csLogo_fullBackgroundNext" class="fragment"></span>
+                    <ul>
+                        <li class="fragment">Uz CoffeeScript tvorac <a href="http://backbonejs.org/">Backbone.js</a> i <a href="http://underscorejs.org/">Underscore</a> frameworka. Trenutno zaposlen @NYTimes i <a href="https://www.documentcloud.org/home">DocumentCloud</a></li>
+                        <li class="fragment">Badnjak 2009 - CoffeScript 0.1.0, kompajler napisan u Ruby-u</li>
+                        <li class="fragment">21. 2. 2010 - CoffeScript 0.5.0, kompajler pisan u CS-u</li>
+                        <li class="fragment">Badnjak 2010 - CoffeScript 1.0.0</li>
+                        <li class="fragment">5. 3. 2013 - CoffeScript 1.6.1, source maps!</li>
+                    </ul>
+                </section>
+            </section>
 
-					<aside class="notes">
-						Oh hey, these are some notes. They'll be hidden in your presentation, but you can see them if you open the speaker notes window (hit 's' on your keyboard).
-					</aside>
-				</section>
+            <section>
+                <h2 style="vertical-align: top;">CoffeScript: `It's just JavaScript´</h2>
+                <blockquote class="fragment">Expose the good parts of JavaScript in a simple way.</blockquote>
+                <blockquote class="fragment">Compiles one-to-one into the equivalent JS.</blockquote>
+                <blockquote class="fragment">Compiled output is readable and pretty-printed, will work in every JavaScript runtime.</blockquote>
+                <blockquote class="fragment"><a href="https://en.wikipedia.org/wiki/Source-to-source_compiler">Transcompiler</a> - source-to-source compiler translates between programming languages</blockquote>
+            </section>
 
-				<!-- Example of nested vertical slides -->
-				<section>
-					<section>
-						<h2>Vertical Slides</h2>
-						<p>
-							Slides can be nested inside of other slides,
-							try pressing <a href="#" class="navigate-down">down</a>.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 1</h2>
-						<p>Press down or up to navigate.</p>
-					</section>
-					<section>
-						<h2>Basement Level 2</h2>
-						<p>Cornify</p>
-						<a class="test" href="http://cornify.com">
-							<img width="280" height="326" src="https://s3.amazonaws.com/hakim-static/reveal-js/cornify.gif" alt="Unicorn">
-						</a>
-					</section>
-					<section>
-						<h2>Basement Level 3</h2>
-						<p>That's it, time to go back up.</p>
-						<a href="#/2" class="image">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Up arrow" style="-webkit-transform: rotate(180deg);">
-						</a>
-					</section>
-				</section>
+            <section data-background="orange">
+                <h2>A što fali JS-u?</h2>
+                <table>
+                    <tr class="fragment">
+                        <th>Uvijek vidljiva globalna varijabla</th>
+                        <td>CoffeScript onemogućava zagađenje globalnog scope-a</td>
+                    </tr>
+                    <tr class="fragment">
+                        <th>Opasna uporaba operatora ==</th>
+                        <td>CoffeScript će automatski konvertirati u === i !===</td>
+                    </tr>
+                    <tr class="fragment">
+                        <td><pre><code class="javascript" data-trim contenteditable>typeof a !== "undefined" 
+&& a !== null</code></pre></td>
+                        <td>existential op. ?, false unless a variable is undefined or null <pre><code class="coffeescript" data-trim contenteditable>if carrots? && broccoli?
+alert 'this is healthy'</code></pre></td>
+                    </tr>
+                </table>
+            </section>
+            
+            <section>
+                <h2>CoffeScript popravlja JS sintaksu</h2>
+                <p class="fragment">
+                    CoffeScript sintaksa je inspirirana <b>Ruby-em</b> i Pythonom. 
+                    <ul>
+                        <li class="fragment">Ne koristi <pre>;</pre> i <pre>}</pre></li>
+                        <li class="fragment"><em>Syntactical whitespace</em> - kao i Python</li>
+                        <li class="fragment">Opcionalne zagrade kod poziva metoda</li>
+                        <li class="fragment"><quote>Great function syntax</quote></li>
+                    </ul> 
+                <p>
+            </section>
+            
+            <section>
+                <h2>Cilj: kraći i lako čitljiv kod</h2>
+                <ul>
+                    <li class="fragment"><a target="blank" href="http://coffeescript.org/#try:var%20square%3B%0A%0Asquare%20%3D%20function(x)%20%7B%0A%20%20return%20x%20*%20x%3B%0A%7D%3B">JavaScript</a><pre><code data-trim contenteditable>
+var square;
 
-				<section>
-					<h2>Slides</h2>
-					<p>
-						Not a coder? No problem. There's a fully-featured visual editor for authoring these, try it out at <a href="http://slid.es" target="_blank">http://slid.es</a>.
-					</p>
-				</section>
+square = function(x) {
+  return x * x;
+};
+                    </code></pre></li>
+                    <li class="fragment">CoffeScript<pre><code class="coffeescript" data-trim contenteditable>
+square = (x) -> x * x
+                    </code></pre></li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Syntactic sugar</h2>
+                <ul>
+                    <li class="fragment">Ne obavezan <pre>return</pre></li>
+                    <li class="fragment"><a target="blank" href="http://coffeescript.org/#try:square%20%3D%20(n%3D1)%20-%3E%0A%20%20%20%20alert(n%20*%20n)%0Asquare()">Default arguments</a><pre><code class="coffeescript" data-trim contenteditable>
+square = (n=1) ->
+    alert(n * n)
+square()
+                    </code></pre></li>
+                    <li class="fragment" title="variable numbers of argument"><a target="blank" href="http://coffeescript.org/#try:gpaScoreAverage%20%3D%20(scores...)%20-%3E%0A%20%20%20%20total%20%3D%20scores.reduce%20(a%2C%20b)%20-%3E%20a%20%2B%20b%0A%20%20%20%20total%20%2F%20scores.length%0A%0Aalert(%20gpaScoreAverage%201%2C%202%2C%205%20)">Splats</a>
+                    <pre><code class="coffeescript" data-trim contenteditable>gpaScoreAverage = (scores...) ->
+    total = scores.reduce (a, b) -> a + b
+    total / scores.length</code></pre>
+                    </li>
+                    <li class="fragment"><a target="blank" href="http://coffeescript.org/#try:eat%20%3D%20(food)%20-%3E%20alert%20%22I%20like%20%23%7Bfood%7D%22%0Aeat%20food%20for%20food%20in%20%5B'toast'%2C%20'cheese'%2C%20'wine'%5D">Comprehensions</a>
+                <pre><code class="coffeescript" data-trim contenteditable>
+eat = (food) -> alert "I like #{food}"
+eat food for food in ['toast', 'cheese', 'wine']                        
+                        </code></pre>
+                    </li>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Klase</h2>
+                <pre><code class="coffeescript" data-trim contenteditable>
+class Animal
+  constructor: (@name) ->
 
-				<section>
-					<h2>Point of View</h2>
-					<p>
-						Press <strong>ESC</strong> to enter the slide overview.
-					</p>
-					<p>
-						Hold down alt and click on any element to zoom in on it using <a href="http://lab.hakim.se/zoom-js">zoom.js</a>. Alt + click anywhere to zoom back out.
-					</p>
-				</section>
+  move: (meters) ->
+    alert @name + " moved #{meters}m."
 
-				<section>
-					<h2>Works in Mobile Safari</h2>
-					<p>
-						Try it out! You can swipe through the slides and pinch your way to the overview.
-					</p>
-				</section>
+class Snake extends Animal
+  move: ->
+    alert "Slithering..."
+    super 5
 
-				<section>
-					<h2>Marvelous Unordered List</h2>
-					<ul>
-						<li>No order here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-						<li>Or here</li>
-					</ul>
-				</section>
+class Horse extends Animal
+  move: ->
+    alert "Galloping..."
+    super 45
 
-				<section>
-					<h2>Fantastic Ordered List</h2>
-					<ol>
-						<li>One is smaller than...</li>
-						<li>Two is smaller than...</li>
-						<li>Three!</li>
-					</ol>
-				</section>
+sam = new Snake "Sammy the Python"
+tom = new Horse "Tommy the Palomino"
 
-				<section data-markdown>
-					<script type="text/template">
-						## Markdown support
+sam.move()
+tom.move()                
+                </code></pre>
+                <p><a target="blank" href="http://coffeescript.org/#try:class%20Animal%0A%20%20constructor%3A%20(%40name)%20-%3E%0A%0A%20%20move%3A%20(meters)%20-%3E%0A%20%20%20%20alert%20%40name%20%2B%20%22%20moved%20%23%7Bmeters%7Dm.%22%0A%0Aclass%20Snake%20extends%20Animal%0A%20%20move%3A%20-%3E%0A%20%20%20%20alert%20%22Slithering...%22%0A%20%20%20%20super%205%0A%0Aclass%20Horse%20extends%20Animal%0A%20%20move%3A%20-%3E%0A%20%20%20%20alert%20%22Galloping...%22%0A%20%20%20%20super%2045%0A%0Asam%20%3D%20new%20Snake%20%22Sammy%20the%20Python%22%0Atom%20%3D%20new%20Horse%20%22Tommy%20the%20Palomino%22%0A%0Asam.move()%0Atom.move()">Pokreni</a>
+            </section>
+            
+            <section>
+                <h2><img alt="TW" src="images/tw-logo.png" width="250" ></img> Technology Radar 5/2013</h2>
+                <div id="radar">
+                    <div></div>
+                </div>
+            </section>
+            
+            
 
-						For those of you who like that sort of thing. Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
+            <section>
+                <h1>Reference</h1>
+                <ul>
+                    <li>CROZDevCon logo - <a href="http://supalogo.com/">http://supalogo.com/</a></li>
+                    <li>JS logo - <a href="http://ocpsoft.org/wp-content/uploads/2013/01/javascript_logo_unofficial-300x300.png?337aae">http://ocpsoft.org</a></li>
+                    <li>ThoughtWorks  - <a href="http://www.thoughtworks.com/radar">Technology Radar</a></li>
+                    <li>Jeremy Ashkenas: <a href="https://www.youtube.com/watch?v=QTj6Q_zV1yg">CoffeeScript as a JS/Next</a></li>
+                </ul>
+            </section>
+        </div>
+    </div>
 
-						```
-						<section data-markdown>
-						  ## Markdown support
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="js/coffee-script.js"></script>
+    
 
-						  For those of you who like that sort of thing.
-						  Instructions and a bit more info available [here](https://github.com/hakimel/reveal.js#markdown).
-						</section>
-						```
-					</script>
-				</section>
+    <script>
+					// Full list of configuration options available here:
+					// https://github.com/hakimel/reveal.js#configuration
+					Reveal
+							.initialize({
+								controls : true,
+								progress : true,
+								history : true,
+								center : false,
 
-				<section id="transitions">
-					<h2>Transition Styles</h2>
-					<p>
-						You can select from different transitions, like: <br>
-						<a href="?transition=cube#/transitions">Cube</a> -
-						<a href="?transition=page#/transitions">Page</a> -
-						<a href="?transition=concave#/transitions">Concave</a> -
-						<a href="?transition=zoom#/transitions">Zoom</a> -
-						<a href="?transition=linear#/transitions">Linear</a> -
-						<a href="?transition=fade#/transitions">Fade</a> -
-						<a href="?transition=none#/transitions">None</a> -
-						<a href="?#/transitions">Default</a>
-					</p>
-				</section>
+								theme : Reveal.getQueryHash().theme, // available themes are in /css/theme
+								transition : Reveal.getQueryHash().transition
+										|| 'cube', // default/cube/page/concave/zoom/linear/fade/none
 
-				<section id="themes">
-					<h2>Themes</h2>
-					<p>
-						Reveal.js comes with a few themes built in: <br>
-						<a href="?theme=sky#/themes">Sky</a> -
-						<a href="?theme=beige#/themes">Beige</a> -
-						<a href="?theme=simple#/themes">Simple</a> -
-						<a href="?theme=serif#/themes">Serif</a> -
-						<a href="?theme=night#/themes">Night</a> -
-						<a href="?#/themes">Default</a>
-					</p>
-					<p>
-						<small>
-							* Theme demos are loaded after the presentation which leads to flicker. In production you should load your theme in the <code>&lt;head&gt;</code> using a <code>&lt;link&gt;</code>.
-						</small>
-					</p>
-				</section>
+								// The "normal" size of the presentation, aspect ratio will be preserved
+								// when the presentation is scaled to fit different resolutions. Can be
+								// specified using percentage units.
+								width : 960,
+								height : 700,
 
-				<section>
-					<h2>Global State</h2>
-					<p>
-						Set <code>data-state="something"</code> on a slide and <code>"something"</code>
-						will be added as a class to the document element when the slide is open. This lets you
-						apply broader style changes, like switching the background.
-					</p>
-				</section>
+								// Factor of the display size that should remain empty around the content
+								margin : 0.1,
 
-				<section data-state="customevent">
-					<h2>Custom Events</h2>
-					<p>
-						Additionally custom events can be triggered on a per slide basis by binding to the <code>data-state</code> name.
-					</p>
-					<pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
-Reveal.addEventListener( 'customevent', function() {
-	console.log( '"customevent" has fired' );
-} );
-					</code></pre>
-				</section>
+								// Bounds for smallest/largest possible scale to apply to content
+								minScale : 0.2,
+								maxScale : 1.0,
 
-				<section>
-					<section data-background="#007777">
-						<h2>Slide Backgrounds</h2>
-						<p>
-							Set <code>data-background="#007777"</code> on a slide to change the full page background to the given color. All CSS color formats are supported.
-						</p>
-						<a href="#" class="image navigate-down">
-							<img width="178" height="238" src="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" alt="Down arrow">
-						</a>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png">
-						<h2>Image Backgrounds</h2>
-						<pre><code>&lt;section data-background="image.png"&gt;</code></pre>
-					</section>
-					<section data-background="https://s3.amazonaws.com/hakim-static/reveal-js/arrow.png" data-background-repeat="repeat" data-background-size="100px">
-						<h2>Repeated Image Backgrounds</h2>
-						<pre><code style="word-wrap: break-word;">&lt;section data-background="image.png" data-background-repeat="repeat" data-background-size="100px"&gt;</code></pre>
-					</section>
-				</section>
+								// Optional libraries used to extend on reveal.js
+								dependencies : [
+										{
+											src : 'lib/js/classList.js',
+											condition : function() {
+												return !document.body.classList;
+											}
+										},
+										{
+											src : 'plugin/markdown/marked.js',
+											condition : function() {
+												return !!document
+														.querySelector('[data-markdown]');
+											}
+										},
+										{
+											src : 'plugin/markdown/markdown.js',
+											condition : function() {
+												return !!document
+														.querySelector('[data-markdown]');
+											}
+										},
+										{
+											src : 'plugin/highlight/highlight.js',
+											async : true,
+											callback : function() {
+												hljs.initHighlightingOnLoad();
+											}
+										},
+										{
+											src : 'plugin/zoom-js/zoom.js',
+											async : true,
+											condition : function() {
+												return !!document.body.classList;
+											}
+										},
+										{
+											src : 'plugin/notes/notes.js',
+											async : true,
+											condition : function() {
+												return !!document.body.classList;
+											}
+										}
+								// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+								// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+								]
+							});
+				</script>
 
-				<section data-transition="linear" data-background="#4d7e65" data-background-transition="slide">
-					<h2>Background Transitions</h2>
-					<p>
-						Pass reveal.js the <code>backgroundTransition: 'slide'</code> config argument to make backgrounds slide rather than fade.
-					</p>
-				</section>
 
-				<section data-transition="linear" data-background="#8c4738" data-background-transition="slide">
-					<h2>Background Transition Override</h2>
-					<p>
-						You can override background transitions per slide by using <code>data-background-transition="slide"</code>.
-					</p>
-				</section>
-
-				<section>
-					<h2>Clever Quotes</h2>
-					<p>
-						These guys come in two forms, inline: <q cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;The nice thing about standards is that there are so many to choose from&rdquo;</q> and block:
-					</p>
-					<blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
-						&ldquo;For years there has been a theory that millions of monkeys typing at random on millions of typewriters would
-						reproduce the entire works of Shakespeare. The Internet has proven this theory to be untrue.&rdquo;
-					</blockquote>
-				</section>
-
-				<section>
-					<h2>Pretty Code</h2>
-					<pre><code data-trim contenteditable>
-function linkify( selector ) {
-  if( supports3DTransforms ) {
-
-    var nodes = document.querySelectorAll( selector );
-
-    for( var i = 0, len = nodes.length; i &lt; len; i++ ) {
-      var node = nodes[i];
-
-      if( !node.className ) ) {
-        node.className += ' roll';
-      }
-    };
-  }
-}
-					</code></pre>
-					<p>Courtesy of <a href="http://softwaremaniacs.org/soft/highlight/en/description/">highlight.js</a>.</p>
-				</section>
-
-				<section>
-					<h2>Intergalactic Interconnections</h2>
-					<p>
-						You can link between slides internally,
-						<a href="#/2/3">like this</a>.
-					</p>
-				</section>
-
-				<section>
-					<section>
-						<h2>Fragmented Views</h2>
-						<p>Hit the next arrow...</p>
-						<p class="fragment">... to step through ...</p>
-						<ol>
-							<li class="fragment"><code>any type</code></li>
-							<li class="fragment"><em>of view</em></li>
-							<li class="fragment"><strong>fragments</strong></li>
-						</ol>
-
-						<aside class="notes">
-							This slide has fragments which are also stepped through in the notes window.
-						</aside>
-					</section>
-					<section>
-						<h2>Fragment Styles</h2>
-						<p>There's a few styles of fragments, like:</p>
-						<p class="fragment grow">grow</p>
-						<p class="fragment shrink">shrink</p>
-						<p class="fragment roll-in">roll-in</p>
-						<p class="fragment fade-out">fade-out</p>
-						<p class="fragment highlight-red">highlight-red</p>
-						<p class="fragment highlight-green">highlight-green</p>
-						<p class="fragment highlight-blue">highlight-blue</p>
-					</section>
-				</section>
-
-				<section>
-					<h2>Spectacular image!</h2>
-					<a class="image" href="http://lab.hakim.se/meny/" target="_blank">
-						<img width="320" height="299" src="http://s3.amazonaws.com/hakim-static/portfolio/images/meny.png" alt="Meny">
-					</a>
-				</section>
-
-				<section>
-					<h2>Export to PDF</h2>
-					<p>Presentations can be <a href="https://github.com/hakimel/reveal.js#pdf-export">exported to PDF</a>, below is an example that's been uploaded to SlideShare.</p>
-					<iframe id="slideshare" src="http://www.slideshare.net/slideshow/embed_code/13872948" width="455" height="356" style="margin:0;overflow:hidden;border:1px solid #CCC;border-width:1px 1px 0;margin-bottom:5px" allowfullscreen> </iframe>
-					<script>
-						document.getElementById('slideshare').attributeName = 'allowfullscreen';
-					</script>
-				</section>
-
-				<section>
-					<h2>Take a Moment</h2>
-					<p>
-						Press b or period on your keyboard to enter the 'paused' mode. This mode is helpful when you want to take distracting slides off the screen
-						during a presentation.
-					</p>
-				</section>
-
-				<section>
-					<h2>Stellar Links</h2>
-					<ul>
-						<li><a href="http://slid.es">Try the online editor</a></li>
-						<li><a href="https://github.com/hakimel/reveal.js">Source code on GitHub</a></li>
-						<li><a href="http://twitter.com/hakimel">Follow me on Twitter</a></li>
-					</ul>
-				</section>
-
-				<section>
-					<h1>THE END</h1>
-					<h3>BY Hakim El Hattab / hakim.se</h3>
-				</section>
-
-			</div>
-
-		</div>
-
-		<script src="lib/js/head.min.js"></script>
-		<script src="js/reveal.min.js"></script>
-
-		<script>
-
-			// Full list of configuration options available here:
-			// https://github.com/hakimel/reveal.js#configuration
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
-
-				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-				// Optional libraries used to extend on reveal.js
-				dependencies: [
-					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
-					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
-				]
-			});
-
-		</script>
-
-	</body>
+</body>
 </html>
