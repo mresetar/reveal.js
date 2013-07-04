@@ -1,13 +1,10 @@
-.vjezba { color: purple;}
-
+/* .vjezba { color: purple;} */
 .croz section {
 	background: url("../images/CROZ-logo_small_2.png");
-	background-position: 5% 94%;
+	background-position: 5% 93%;
 	background-repeat: no-repeat;
 	background-size: 200px;
 }
-
-
 
 .croz #authors, .croz #authors h1, .croz #authors h2 {
 	color: white;
@@ -16,7 +13,6 @@
 .croz #authors>section.present {
 	background: rgba(0,0,0,0.3);
 }
-
 
 .croz section #radar {
 	height: 400px;
@@ -32,16 +28,29 @@
 	background-position: 0% 0%;
 }
 
-/*
-.croz #author  { 
- 	background: rgba(0,0,0,0.4); 
- }
- */ 
+.forkMeInvisible {
+	display: none;
+}
+
+.forkMeVisible {
+	display: block;
+}
+
+#forkMe img {
+	position: absolute; 
+	top: 0; 
+	right: 0; 
+	border: 0;
+}
+
+.croz section img {
+	border: 0;
+}
 
 .reveal h1 { font-size: 2.5em; }
 .reveal h2 { font-size: 1.8em; }
 
-.state-background { background: white;}
+.state-background { background: white;} 
 
 .reveal pre {
 	width: 100%;

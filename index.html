@@ -40,7 +40,7 @@
 
         <!-- Any section element inside of this container is displayed as a slide -->
         <div class="slides croz">
-            <section>
+            <section id="firstSlide">
                 <img alt="CroDevCon" src="images/CROZDevCon.png" /> <img alt="CoffeeScript" src="images/csLogo.png">
                 <p>
                     <small>...a little language that compiles into JavaScript</small>
@@ -48,6 +48,25 @@
                 <p>
                     <small><a href="http://www.croz.net">CROZ</a> 6.7.2013. / <a href="http://twitter.com/MiroslavResetar">@MiroslavResetar</a></small>
                 </p>
+            </section>
+
+            <section>
+                <video controls='controls' height='545' preload='none' width='700'>
+                    <source src='http://www.viddler.com/file/6297cd47/html5/' type='video/mp4'></source>
+                    <track kind='subtitles' src='/assets/level1-en.srt' srclang='en'></track>
+                    <object data='http://www.viddler.com/simple/6297cd47/' height='545' type='application/x-shockwave-flash' width='700'>
+                        <param name='movie' value='http://www.viddler.com/simple/6297cd47/'>
+                        <param name='flashvars' value='f=1&amp;autoplay=f&amp;disablebranding=0&amp;loop=0&amp;hd=0&amp;enablecallbacks=t&amp;useJavaScript=t'>
+                    </object>
+                   <p>Your browser does not support HTML5 video. Please download the video using the link on the right.</p>
+                </video>
+            </section>            
+            
+            <section>
+                <h2><img alt="TW" src="images/tw-logo.png" width="250" ></img> Technology Radar 5/2013</h2>
+                <div id="radar">
+                    <div></div>
+                </div>
             </section>
             
             <section id="authors" data-background="images/Brendan_Eich_and_Jeremy_Ashkenas_2.png" data-background-size="800px">
@@ -70,21 +89,7 @@
                 <section>
                     <h2>Jeremy Ashkenas</h2>
                      <img alt="csLogo_fullBackground" src="images/csLogo_fullBackground.png" id="csLogo_fullBackground" class="fragment" />
-<script type="text/coffeescript">
-dodajEfekt = (elementId, elemIdTest, elemId='javaScriptLogo', shown=true) ->
-    if (elementId == elemIdTest) 
-        if (shown) 
-            $("##{elemId}").addClass 'animated bounceInDown'
-        else
-            $("##{elemId}").addClass 'animated bounceOutDown'
-            $("##{elemId}").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", () -> $("##{elemId}").remove() )
-
-Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'javaScriptLogo', 'javaScriptLogo', true))
-Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'javaScriptLogoNext', 'javaScriptLogo', false)) 
-Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'csLogo_fullBackground', 'csLogo_fullBackground', true))
-Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'csLogo_fullBackgroundNext', 'csLogo_fullBackground', false)) 
-</script>                   
-                    <span id="csLogo_fullBackgroundNext" class="fragment"></span>
+                     <span id="csLogo_fullBackgroundNext" class="fragment"></span>
                     <ul>
                         <li class="fragment">Uz CoffeeScript tvorac <a href="http://backbonejs.org/">Backbone.js</a> i <a href="http://underscorejs.org/">Underscore</a> frameworka. Trenutno zaposlen @NYTimes i <a href="https://www.documentcloud.org/home">DocumentCloud</a></li>
                         <li class="fragment">Badnjak 2009 - CoffeScript 0.1.0, kompajler napisan u Ruby-u</li>
@@ -204,30 +209,105 @@ tom.move()
             </section>
             
             <section>
-                <h2><img alt="TW" src="images/tw-logo.png" width="250" ></img> Technology Radar 5/2013</h2>
-                <div id="radar">
-                    <div></div>
-                </div>
+                <h2>Out in the wild</h2>
+                <p class="fragment"><img alt="dropbox" src="images/dropboxLogo.png" ><br />
+                Dropbox je prabacio sav JS u CS u tjedan dana.</p>
+                <ul>
+                    <li class="fragment">3 inženjera 23k linije koda u tjedan dana</li>
+                    <li class="fragment">Alati: <a href="http://js2coffee.org/">js2coffee</a>, <a href="http://pivotal.github.io/jasmine/">jasmine</a> i <a href="http://docs.seleniumhq.org/">selenium</a> </li>
+                    <li class="fragment">Smanjenje koda za 21%</li>
+                    <li class="fragment">Sada pišu sav novi kod u CS-u</li>
+                </ul>
+                <p>Rails-i 3.1 koriste <a target="blank" href="https://news.ycombinator.com/item?id=2442663">CoffeScript kao default</a>.</p>
             </section>
             
+            <section>
+                <h2>Loše strane/problemi</h2>
+                <ul>
+                    <li class="fragment">Debugging</li>
+                    <ul class="fragment">
+                        <li>Do sada kroz debugging JS-a</li>
+                        <li>Trajno rješenje: <a target="blank" href="http://www.html5rocks.com/en/tutorials/developertools/sourcemaps/">Source maps</a></li>
+                    </ul>
+                    <li class="fragment">Tooling suport</li>
+                        <div class="fragment">
+                            <blockquote class="twitter-tweet"><p>Installing <a target="blank" href="https://twitter.com/search?q=%23cofeescript&amp;src=hash">#cofeescript</a> in <a target="blank" href="https://twitter.com/search?q=%23eclipse&amp;src=hash">#eclipse</a>. 2 stops operation,1st install EMF <a href="http://t.co/uKS76GPuV5">http://t.co/uKS76GPuV5</a> 2nd use this file <a href="http://t.co/lBwy9aEbBe">http://t.co/lBwy9aEbBe</a></p>&mdash; Miroslav Rešetar (@MiroslavResetar) <a href="https://twitter.com/MiroslavResetar/statuses/340076902150713344">May 30, 2013</a></blockquote>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></div>
+                        <ul class="fragment">
+                            <li>Rješenje: IntelliJ IDEA nudi full <a target="blank" href="http://www.jetbrains.com/webstorm/webhelp/debugging-coffeescript.html">CS support</a> (uključujući debugging)</li>
+                            <li><a target="blank" href="https://github.com/talios/coffee-maven-plugin">Maven CS compiler</a></li>
+                        </ul>
+                </ul>
+            </section>
             
+            <section>
+                <h2>Besplatno obrazovanje</h2>
+                <ul>
+                    <li class="fragment">Starting point <a target="blank" href="http://coffeescript.org/">coffeescript.org</a></li>
+                    <li class="fragment">Dobar <a  target="blank" href="http://www.ibm.com/developerworks/library/wa-coffee1/">getting started</a> na developerWorksima</li>
+                    <li class="fragment"><a target="blank" href="http://jsbooks.revolunet.com/">Besplatne JavaScript knjige</a>
+                        <ul>
+                            <li><a target="blank" href="http://arcturo.github.io/library/coffeescript/">The Little Book on CoffeScript</a></li>
+                            <li><a target="blank" href="https://efendibooks.com/minibooks/testing-with-coffeescript">Testing with CoffeeScript </a></li>
+                        </ul> 
+                    </li>
+                    <li class="fragment">Videos @<a href="http://coffeescript.codeschool.com/levels/1">code school</a></li>
+                </ul>
+            </section>
 
             <section>
-                <h1>Reference</h1>
+                <h2>Reference</h2>
                 <ul>
-                    <li>CROZDevCon logo - <a href="http://supalogo.com/">http://supalogo.com/</a></li>
-                    <li>JS logo - <a href="http://ocpsoft.org/wp-content/uploads/2013/01/javascript_logo_unofficial-300x300.png?337aae">http://ocpsoft.org</a></li>
-                    <li>ThoughtWorks  - <a href="http://www.thoughtworks.com/radar">Technology Radar</a></li>
-                    <li>Jeremy Ashkenas: <a href="https://www.youtube.com/watch?v=QTj6Q_zV1yg">CoffeeScript as a JS/Next</a></li>
+                    <li>JS logo - <a target="blank" href="http://ocpsoft.org/wp-content/uploads/2013/01/javascript_logo_unofficial-300x300.png?337aae">http://ocpsoft.org</a></li>
+                    <li>ThoughtWorks  - <a target="blank" href="http://www.thoughtworks.com/radar">Technology Radar</a></li>
+                    <li>Jeremy Ashkenas: <a target="blank" href="https://www.youtube.com/watch?v=QTj6Q_zV1yg">CoffeeScript as a JS/Next</a></li>
+                    <li>Dropbox: <a target="blank" href="https://tech.dropbox.com/2012/09/dropbox-dives-into-coffeescript/">dives into cs</a>
+                </ul>
+            </section>
+            
+            <section>
+                <h2>Korišteni alati za ovu prezentaciju</h2>
+                <ul>
+                    <li><a href="http://lab.hakim.se/reveal-js/">Reveal.Js</a></li>
+                    <li><a href="http://daneden.me/animate/">Animate.Css</a></li>
+                    <li>CROZDevCon logo - <a target="blank" href="http://supalogo.com/">http://supalogo.com/</a></li>
+                    <li>I žličica <a target="blank" href="http://coffeescript.org/">CoffeeScript-a</a></li>
                 </ul>
             </section>
         </div>
     </div>
+    
+    <a id="forkMe" class="forkMeInvisible" href="https://github.com/mresetar/reveal.js" >
+        <img alt="Fork me on GitHub" src="https://a248.e.akamai.net/camo.github.com/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" >
+    </a>
 
     <script src="lib/js/head.min.js"></script>
     <script src="js/reveal.min.js"></script>
     <script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
     <script type="text/javascript" src="js/coffee-script.js"></script>
+<script type="text/coffeescript">
+dodajEfekt = (elementId, elemIdTest, elemId='javaScriptLogo', shown=true) ->
+    if (elementId == elemIdTest) 
+        if (shown) 
+            $("##{elemId}").addClass 'animated bounceInDown'
+        else
+            $("##{elemId}").addClass 'animated bounceOutDown'
+            $("##{elemId}").bind("animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd", () -> $("##{elemId}").remove() )
+
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'javaScriptLogo', 'javaScriptLogo', true))
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'javaScriptLogoNext', 'javaScriptLogo', false)) 
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'csLogo_fullBackground', 'csLogo_fullBackground', true))
+Reveal.addEventListener( 'fragmentshown', (event) -> dodajEfekt(event.fragment.id, 'csLogo_fullBackgroundNext', 'csLogo_fullBackground', false))
+
+showHideForkMe = ( event ) ->
+	if (Reveal.isLastSlide()) 
+		$('#forkMe').addClass 'forkMeVisible' 
+	else 
+		$('#forkMe').removeClass 'forkMeVisible'
+
+Reveal.addEventListener( 'slidechanged',  showHideForkMe )
+Reveal.addEventListener( 'ready', showHideForkMe )
+</script>
     
 
     <script>
